@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - ./ansible:/ansible
+    depends_on:
+      - ubuntu1
+      - ubuntu2
+
+  ubuntu1:
+    image: ubuntu:22.04
+    container_name: ubuntu1
+    command: sleep infinity
+    tty: true
+
+  ubuntu2:
+    image: ubuntu:22.04
+    container_name: ubuntu2
+    command: sleep infinity
+    tty: true
+
+volumes:
+  jenkins_home:
+

@@ -1,0 +1,6 @@
+- name: Deploy webserver on containers
+  hosts: ubuntu_containers
+  become: yes
+  roles:
+    - webserver
+
